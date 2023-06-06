@@ -1,0 +1,12 @@
+version: "3.9"
+name: webpad
+services:
+  webpad-cms-backend:
+    restart: always
+    build: ./backend
+    container_name: webpad-cms-backend
+    volumes:
+      - ./backend/src:/opt/app/src
+    command: npm run dev
+    ports:
+      - "3001:3001"
