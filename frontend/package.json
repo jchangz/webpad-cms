@@ -4,12 +4,27 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev:frontend": "vite --host",
+    "dev:server": "nodemon -L src/app.ts",
+    "dev": "concurrently 'npm:dev:frontend' 'npm:dev:server'",
+    "start": "NODE_ENV=production ts-node --esm src/app.ts",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.1.0",
+    "nodemon": "^2.0.22",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6"
   }
 }
