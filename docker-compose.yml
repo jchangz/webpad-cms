@@ -10,3 +10,21 @@ services:
     command: npm run dev
     ports:
       - "3001:3001"
+  webpad-cms-frontend:
+    restart: always
+    build: ./frontend
+    container_name: webpad-cms-frontend
+    volumes:
+      - ./frontend:/opt/app/frontend
+      - ./frontend/package.json:/opt/app/package.json
+      - ./frontend/package-lock.json:/opt/app/package-lock.json
+      - notused:/opt/app/frontend/node_modules
+    ports:
+      - "3000:3000"
+      - "5173:5173"
+    environment:
+      - REST_API_URL=http://webpad-cms-backend:3001
+    command: npm run dev
+
+volumes:
+  notused:
