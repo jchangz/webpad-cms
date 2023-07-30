@@ -1,6 +1,0 @@
-{
-  "execMap": {
-    "ts": "ts-node -T --esm"
-  },
-  "ignore": ["src/components/*"] 
-}
