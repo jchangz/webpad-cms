@@ -1,6 +1,15 @@
 version: "3.9"
 name: webpad
 services:
+  webpad-cms-screenshot:
+    restart: always
+    build: ./screenshot
+    container_name: webpad-cms-screenshot
+    volumes:
+      - ./screenshot/src:/opt/app/src
+    command: npm run dev
+    ports:
+      - "4567:4567"
   webpad-cms-backend:
     restart: always
     build: ./backend
